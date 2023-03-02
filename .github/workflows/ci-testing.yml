@@ -23,3 +23,6 @@ jobs:
           ls ${{ github.workspace }}
           echo "done"
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: pytest
+        run: |
+          pytest
