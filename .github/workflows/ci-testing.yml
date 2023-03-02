@@ -17,8 +17,7 @@ jobs:
         with:
           python-version: '3.9'
       - run: |
-          pip install poetry
-          poetry install
+          pip install .
       - name: run pytest
         run: |
           pytest
