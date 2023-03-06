@@ -15,3 +15,26 @@ addopts = """
 fail_under = 0
 show_missing = true
 exclude_lines = ["pragma: no cover", "raise NotImplementedError"]
+
+[tool.poetry]
+name = "dlmarines"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.11"
+torch = "^1.13.1"
+numpy = "^1.24.2"
+kedro = "^0.18.5"
+pytest = "^7.2.1"
+pytest-cov = "^4.0.0"
+
+
+[tool.poetry.group.dev.dependencies]
+kedro-viz = "^5.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
