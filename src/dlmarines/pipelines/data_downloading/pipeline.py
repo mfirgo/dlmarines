@@ -16,12 +16,12 @@ def create_pipeline(**kwargs) -> Pipeline:
     print("from create pipeline {params}")
     return pipeline(
         [
-            node(
-                func=print_conf,
-                inputs="params:kaggle",
-                outputs=None,
-                name="print_conf_node",
-            ),
+            # node(
+            #     func=print_conf,
+            #     inputs="params:kaggle",
+            #     outputs=None,
+            #     name="print_conf_node",
+            # ),
             node(
                 func=download_dataset,
                 inputs="params:kaggle",

@@ -22,6 +22,12 @@ logs/**
 ##########################
 # Common files
 
+# Lock files
+*.lock
+
+# VSCode
+.vscode/
+
 # IntelliJ
 .idea/
 *.iml
