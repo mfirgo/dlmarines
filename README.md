@@ -23,3 +23,6 @@ kaggle:
       username: "your_kaggle_username"
       key: "123456789"
 ```
+
+**Downloading data**
+The data download procedure can be run by `kedro run --pipeline data_downloading`
