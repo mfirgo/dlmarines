@@ -8,12 +8,12 @@ def create_pipeline(**kwargs) -> Pipeline:
             node(
                 func=unzip_dataset,
                 inputs=None,
-                outputs="nothing",
+                outputs="unzipped",
                 name="unzip_dataset_node",
             ),
             node(
                 func=load_dataset,
-                inputs=None,
+                inputs='unzipped',
                 outputs="dataset",
                 name="load_dataset_node",
             ),
