@@ -29,8 +29,20 @@ https://kedro.readthedocs.io/en/stable/kedro_project_setup/settings.html."""
 # CONFIG_LOADER_CLASS = TemplatedConfigLoader
 # Keyword arguments to pass to the `CONFIG_LOADER_CLASS` constructor.
 # CONFIG_LOADER_ARGS = {
-#     "globals_pattern": "*globals.yml",
+#    #"globals_pattern": "*globals.yml",
 # }
+CONFIG_LOADER_ARGS = {
+    "config_patterns": {
+        "spark": ["spark*/"],
+        "parameters": [
+            "parameters*",
+            "parameters*/**",
+            "**/parameters*",
+            "../local/credentials*",
+        ],
+        "credentials": ["../local/credentials*"],
+    },
+}
 
 # Class that manages the Data Catalog.
 # from kedro.io import DataCatalog

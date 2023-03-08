@@ -17,3 +17,9 @@ poetry install
 ```json
 { "username":"your_kaggle_username","key":"123456789"}
 ```
+4. In `conf\local\credentials.yml` add your username and key as shown below:
+```yml
+kaggle:
+      username: "your_kaggle_username"
+      key: "123456789"
+```

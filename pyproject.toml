@@ -30,6 +30,7 @@ numpy = "^1.24.2"
 kedro = "^0.18.5"
 pytest = "^7.2.1"
 pytest-cov = "^4.0.0"
+kaggle = "^1.5.13"
 
 
 [tool.poetry.group.dev.dependencies]
