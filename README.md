@@ -23,3 +23,7 @@ kaggle:
       username: "your_kaggle_username"
       key: "123456789"
 ```
+**Running**:
+```
+kedro run
+```
