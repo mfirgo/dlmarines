@@ -3,3 +3,7 @@
 #
 # Documentation for this file format can be found in "Parameters"
 # Link: https://kedro.readthedocs.io/en/0.18.6/kedro_project_setup/configuration.html#parameters
+
+kaggle_credentials:
+  KAGGLE_USERNAME: # add your credentials in local/parameters.yml
+  KAGGLE_KEY:      # add your credentials in local/parameters.yml

@@ -38,7 +38,7 @@ CONFIG_LOADER_ARGS = {
             "parameters*",
             "parameters*/**",
             "**/parameters*",
-            "../local/credentials*",
+            # "../local/credentials*",
         ],
         "credentials": ["../local/credentials*"],
     },

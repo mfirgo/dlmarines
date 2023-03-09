@@ -24,7 +24,7 @@ def create_pipeline(**kwargs) -> Pipeline:
             # ),
             node(
                 func=download_dataset,
-                inputs="params:kaggle",
+                inputs="credentials:kaggle_credentials",
                 outputs=None,
                 name="download_dataset_node",
             ),
