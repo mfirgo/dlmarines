@@ -3,3 +3,18 @@
 #
 # Documentation for this file format can be found in "Parameters"
 # Link: https://kedro.readthedocs.io/en/0.18.5/kedro_project_setup/configuration.html#parameters
+
+model:
+  cnn_channels: 8
+  kernel_size: 3
+  num_cnn_layers: 2
+  num_fc_layers: 2
+  flattened_size: 123008
+  fc_features: 64
+  num_classes: 11699
+  learning_rate: 0.01
+
+model_training:
+  num_epochs: 10
+
+

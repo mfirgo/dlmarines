@@ -23,6 +23,5 @@ def create_pipeline(**kwargs) -> Pipeline:
                 outputs="preprocessed_dataset",
                 name="preprocess_dataset_node",
             ),
-            
         ]
     )

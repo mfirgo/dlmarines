@@ -4,6 +4,7 @@ import torchvision
 from tqdm import tqdm
 from zipfile import ZipFile
 
+
 def unzip_dataset():
     with ZipFile('data/01_raw/sea-animals-image-dataste.zip', 'r') as f:
         f.extractall('data/01_raw')
@@ -25,11 +26,12 @@ def load_dataset(unzipped):
 
 def preprocess_dataset(dataset):
     transform = torchvision.transforms.Compose([
+        torchvision.transforms.Resize((128, 128)),
         torchvision.transforms.ToTensor(),
         # torchvision.transforms.Normalize(mean_vec, std_vec),
     ])
     transformed_dataset = dataset.copy()
+
     for k, v in tqdm(dataset.items()):
         transformed_dataset[k] = transform(v())
     return transformed_dataset
-
