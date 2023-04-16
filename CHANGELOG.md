@@ -12,3 +12,7 @@
 - Added training node
 - Using config params in model_training.yml
 - Using data catalog for saving datasets and models
+
+## 16.04
+- Added Data Downloading and Data Preprocessing sections to Readme
+- Fix errors in data downloading and DataSet module
