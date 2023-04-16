@@ -87,19 +87,34 @@ class MarinesDataModule(pl.LightningDataModule):
         return DataLoader(self.predict, batch_size=32)
     
 
-def get_datamodule(dataset):
-    return MarinesDataModule(dataset)
+def get_datamodules(dataset):
+    n = len(dataset)
+    k = int(0.8*n)
+    train_dataset, test_dataset = random_split(dataset, [k, n-k])
+    train_datamodule = MarinesDataModule(train_dataset)
+    test_datamodule = MarinesDataModule(test_dataset)
+    
+    return train_datamodule, test_datamodule
 
 def create_model(params):
     return MarineModel(params)
 
-def train_model(model, params, datamodule):
-    trainer = pl.Trainer(
-        max_epochs=params['num_epochs'],
+def get_trainer(params):
+    return pl.Trainer(
+        max_epochs=params['num_epochs']
     )
+
+def train_model(model, trainer, train_datamodule):
     trainer.fit(
         model,
-        datamodule=datamodule
+        datamodule=train_datamodule
+    )
+    return model
+
+def test_model(model, trainer, test_datamodule):
+    trainer.test(
+        model,
+        datamodule=test_datamodule
     )
     return model
 
