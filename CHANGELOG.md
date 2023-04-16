@@ -16,3 +16,4 @@
 ## 16.04
 - Added Data Downloading and Data Preprocessing sections to Readme
 - Fix errors in data downloading and DataSet module
+- Added Model Training section to Readme
