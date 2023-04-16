@@ -3,12 +3,19 @@
 
 **Description**: Image recognition of marine animals.
 
-**Installation**:
+## Installation:
 ```bash
 conda env create  --file conda.yml
 conda activate dlmarines
 poetry install
 ```
+
+## Data downloading
+You can download data manually from https://www.kaggle.com/datasets/vencerlanz09/sea-animals-image-dataste into [data/01_raw](./data/01_raw) or use data_downloading pipeline by running
+```
+kedro run --pipeline=data_downloading
+```
+Note that the pipeline uses kaggle api, so in order to run it follow the steps below to download your kaggle key.
 
 **Download Kaggle Api Key**:
 1. Sign in to [kaggle](https://www.kaggle.com/)
@@ -23,7 +30,7 @@ kaggle:
       username: "your_kaggle_username"
       key: "123456789"
 ```
-**Running**:
+## Running:
 ```
 kedro run
 ```

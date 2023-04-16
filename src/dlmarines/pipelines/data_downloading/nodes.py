@@ -18,6 +18,7 @@ def _connect_to_kaggle():
 def download_dataset(kaggle_credentials: dict):
     _setup_evironment_variables(kaggle_credentials)
     api = _connect_to_kaggle()
+    # typo in link is intentional
     api.dataset_download_files('vencerlanz09/sea-animals-image-dataste', path="./data/01_raw")
 
 def print_conf(my_parameters: dict):
