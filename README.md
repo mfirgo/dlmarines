@@ -35,8 +35,15 @@ To preprocess data from [/data/01_raw/sea-animals-image-dataste.zip](./data/01_r
 ```
 kedro run --pipeline=data_processing
 ```
+## Model training
+To train the model use model_training pipeline
+```
+kedro run --pipeline=model_training
+```
 
 ## Running:
+To run all pipelines you can use command:
 ```
 kedro run
 ```
+Remember that in order to automatically download dataset you need to add your kaggle key.
