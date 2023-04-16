@@ -30,6 +30,12 @@ kaggle:
       username: "your_kaggle_username"
       key: "123456789"
 ```
+## Data preprocesing
+To preprocess data from [/data/01_raw/sea-animals-image-dataste.zip](./data/01_raw/sea-animals-image-dataste.zip) use data_processing pipeline
+```
+kedro run --pipeline=data_processing
+```
+
 ## Running:
 ```
 kedro run
