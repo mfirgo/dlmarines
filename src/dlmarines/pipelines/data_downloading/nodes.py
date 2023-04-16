@@ -2,7 +2,6 @@
 This is a boilerplate pipeline 'data_download'
 generated using Kedro 0.18.6
 """
-from kaggle.api.kaggle_api_extended import KaggleApi
 import os
 
 
@@ -11,6 +10,7 @@ def _setup_evironment_variables(kaggle_credentials):
     os.environ['KAGGLE_KEY'] = kaggle_credentials['key']
 
 def _connect_to_kaggle():
+    from kaggle.api.kaggle_api_extended import KaggleApi
     api = KaggleApi()
     api.authenticate()
     return api
