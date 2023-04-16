@@ -11,8 +11,8 @@ model:
   num_fc_layers: 2
   flattened_size: 123008
   fc_features: 64
-  num_classes: 11699
-  learning_rate: 0.01
+  num_classes: 23
+  learning_rate: 0.001
 
 model_training:
   num_epochs: 10

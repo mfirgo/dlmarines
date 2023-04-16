@@ -4,6 +4,7 @@ import torch.nn.functional as F
 import torchvision
 import pytorch_lightning as pl
 from torch.utils.data import random_split, DataLoader
+from collections import defaultdict
 
 
 class MarineModel(pl.LightningModule):
@@ -50,17 +51,17 @@ class MarineModel(pl.LightningModule):
 class MarinesDataModule(pl.LightningDataModule):
     def __init__(self, dataset):
         super().__init__()
-        keys = [k.split('/')[0] for k in dataset.keys()]
+        class_to_id = defaultdict(lambda: len(class_to_id))
         dataset_new = []
         for k, v in dataset.items():
-            k = k.split('/')[0]
-            i = keys.index(k)
+            sample_class = k.split('/')[0]
+            sample_class_id = class_to_id[sample_class]
             if v.shape[0] == 1:
                 v = torch.vstack([v, v, v])
-            if v.shape[0] == 4:
+            elif v.shape[0] == 4:
                 v = v[:3,:,:]
-            dataset_new.append((v, i))
-
+            # we do not need to change anything if number of channels is 3
+            dataset_new.append((v, sample_class_id))
         self.dataset = dataset_new
 
     def setup(self, stage):
