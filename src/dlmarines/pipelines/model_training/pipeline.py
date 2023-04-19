@@ -4,7 +4,7 @@ generated using Kedro 0.18.5
 """
 
 from kedro.pipeline import Pipeline, node, pipeline
-from dlmarines.pipelines.model_training.nodes import create_model, get_trainer, train_model, test_model, get_datamodule
+from dlmarines.pipelines.model_training.nodes import create_model, get_trainer, get_logger, train_model, test_model, get_datamodule
 
 
 def create_pipeline(**kwargs) -> Pipeline:
@@ -17,8 +17,14 @@ def create_pipeline(**kwargs) -> Pipeline:
                 name="get_datamodule_node"
             ),
             node(
+                func=get_logger,
+                inputs="params:logger",
+                outputs="logger",
+                name="get_logger_node",
+            ),
+            node(
                 func=get_trainer,
-                inputs="params:model_training",
+                inputs=["logger", "params:model_training"],
                 outputs="trainer",
                 name="get_trainer_node",
             ),

@@ -17,4 +17,7 @@ model:
 model_training:
   num_epochs: 10
 
+logger:
+  project_name: dlmarines
+
 
