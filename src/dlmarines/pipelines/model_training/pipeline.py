@@ -10,12 +10,12 @@ from dlmarines.pipelines.model_training.nodes import create_model, train_model, 
 def create_pipeline(**kwargs) -> Pipeline:
     return pipeline(
         [
-            node(
-                func=get_datamodule,
-                inputs="preprocessed_dataset",
-                outputs="datamodule",
-                name="get_datamodule_node"
-            ),
+            # node(
+            #     func=get_datamodule,
+            #     inputs="preprocessed_dataset",
+            #     outputs="datamodule",
+            #     name="get_datamodule_node"
+            # ),
             node(
                 func=create_model,
                 inputs="params:model",
@@ -24,7 +24,7 @@ def create_pipeline(**kwargs) -> Pipeline:
             ),
             node(
                 func=train_model,
-                inputs=["model", "params:model_training", "datamodule"],
+                inputs=["model", "params:model_training", "datamodule"], # use train data model
                 outputs="trained_model",
                 name="train_model_node",
             )

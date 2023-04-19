@@ -49,9 +49,9 @@ class MarineModel(pl.LightningModule):
 
 
 class MarinesDataModule(pl.LightningDataModule):
-    def __init__(self, dataset):
+    def __init__(self, dataset, class_to_id_disc = None):
         super().__init__()
-        class_to_id = defaultdict(lambda: len(class_to_id))
+        self.class_to_id = class_to_id_disc
         dataset_new = []
         for k, v in dataset.items():
             sample_class = k.split('/')[0]
@@ -87,14 +87,9 @@ class MarinesDataModule(pl.LightningDataModule):
         return DataLoader(self.predict, batch_size=32)
     
 
-def get_datamodules(dataset):
-    n = len(dataset)
-    k = int(0.8*n)
-    train_dataset, test_dataset = random_split(dataset, [k, n-k])
-    train_datamodule = MarinesDataModule(train_dataset)
-    test_datamodule = MarinesDataModule(test_dataset)
-    
-    return train_datamodule, test_datamodule
+def get_datamodule(dataset):
+    datamodule = MarinesDataModule(dataset)
+    return datamodule
 
 def create_model(params):
     return MarineModel(params)

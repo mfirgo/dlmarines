@@ -48,8 +48,17 @@ preprocessed_dataset:
   filepath: data/02_intermediate/preprocessed_dataset.pkl
   backend: pickle
 
+
 trained_model:
   type: pickle.PickleDataSet
   filepath: data/06_models/trained_model.pkl
   backend: pickle
 
+id_to_class_dict:
+  type: json.JSONDataSet
+  filepath: data/03_primary/labels/id_to_class_dict.json
+
+
+class_to_id_dict:
+  type: json.JSONDataSet
+  filepath: data/03_primary/labels/class_to_id_dict.json
