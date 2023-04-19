@@ -43,6 +43,13 @@ class MarineModel(pl.LightningModule):
         loss = F.cross_entropy(y_hat, y)
         self.log("val_loss", loss)
         return loss
+    
+    def test_step(self, batch, batch_idx):
+        x, y = batch
+        y_hat = self.model(x)
+        loss = F.cross_entropy(y_hat, y)
+        self.log("test_loss", loss)
+        return loss
 
     def configure_optimizers(self):
         return torch.optim.Adam(self.parameters(), lr=self.params['learning_rate'])
@@ -53,6 +60,7 @@ class MarinesDataModule(pl.LightningDataModule):
         super().__init__()
         class_to_id = defaultdict(lambda: len(class_to_id))
         dataset_new = []
+        dataset = dict(dataset)
         for k, v in dataset.items():
             sample_class = k.split('/')[0]
             sample_class_id = class_to_id[sample_class]
@@ -66,13 +74,8 @@ class MarinesDataModule(pl.LightningDataModule):
 
     def setup(self, stage):
         n = len(self.dataset)
-        k = int(0.8*n)
-        if stage == "fit":
-            self.train, self.val = random_split(self.dataset, [k, n-k])
-        if stage == "test":
-            self.test = self.dataset
-        if stage == "predict":
-            self.predict = self.dataset
+        k = int(0.2*n)
+        self.train, self.val, self.test = random_split(self.dataset, [n-2*k, k, k])
 
     def train_dataloader(self):
         return DataLoader(self.train, batch_size=32)
@@ -83,38 +86,35 @@ class MarinesDataModule(pl.LightningDataModule):
     def test_dataloader(self):
         return DataLoader(self.test, batch_size=32)
 
-    def predict_dataloader(self):
-        return DataLoader(self.predict, batch_size=32)
-    
 
-def get_datamodules(dataset):
-    n = len(dataset)
-    k = int(0.8*n)
-    train_dataset, test_dataset = random_split(dataset, [k, n-k])
-    train_datamodule = MarinesDataModule(train_dataset)
-    test_datamodule = MarinesDataModule(test_dataset)
-    
-    return train_datamodule, test_datamodule
+def get_datamodule(dataset):
+    datamodule = MarinesDataModule(dataset)
+    return datamodule
 
 def create_model(params):
     return MarineModel(params)
+
+def get_logger(params):
+    return pl.loggers.WandbLogger(
+        project=params['project_name'],
+    )
 
 def get_trainer(params):
     return pl.Trainer(
         max_epochs=params['num_epochs']
     )
 
-def train_model(model, trainer, train_datamodule):
+def train_model(model, trainer, datamodule):
     trainer.fit(
         model,
-        datamodule=train_datamodule
+        datamodule=datamodule
     )
     return model
 
-def test_model(model, trainer, test_datamodule):
+def test_model(model, trainer, datamodule):
     trainer.test(
         model,
-        datamodule=test_datamodule
+        datamodule=datamodule
     )
     return model
 
