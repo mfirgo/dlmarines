@@ -78,13 +78,13 @@ class MarinesDataModule(pl.LightningDataModule):
         self.train, self.val, self.test = random_split(self.dataset, [n-2*k, k, k])
 
     def train_dataloader(self):
-        return DataLoader(self.train, batch_size=32)
+        return DataLoader(self.train, batch_size=32, num_workers=8)
 
     def val_dataloader(self):
-        return DataLoader(self.val, batch_size=32)
+        return DataLoader(self.val, batch_size=32, num_workers=8)
 
     def test_dataloader(self):
-        return DataLoader(self.test, batch_size=32)
+        return DataLoader(self.test, batch_size=32, num_workers=8)
 
 
 def get_datamodule(dataset):
@@ -99,9 +99,10 @@ def get_logger(params):
         project=params['project_name'],
     )
 
-def get_trainer(params):
+def get_trainer(logger, params):
     return pl.Trainer(
-        max_epochs=params['num_epochs']
+        max_epochs=params['num_epochs'],
+        logger=logger
     )
 
 def train_model(model, trainer, datamodule):
