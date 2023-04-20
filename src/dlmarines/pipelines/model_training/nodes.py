@@ -1,10 +1,10 @@
+import pytorch_lightning as pl
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import torchvision
-import pytorch_lightning as pl
+import wandb
 from torch.utils.data import random_split, DataLoader
-from collections import defaultdict
+from torchvision.datasets import ImageFolder
 
 
 class MarineModel(pl.LightningModule):
@@ -57,26 +57,15 @@ class MarineModel(pl.LightningModule):
 
 
 class MarinesDataModule(pl.LightningDataModule):
-    def __init__(self, dataset):
+    def __init__(self, dataset: ImageFolder):
         super().__init__()
-        class_to_id = defaultdict(lambda: len(class_to_id))
-        dataset_new = []
-        dataset = dict(dataset)
-        for k, v in dataset.items():
-            sample_class = k.split('/')[0]
-            sample_class_id = class_to_id[sample_class]
-            if v.shape[0] == 1:
-                v = torch.vstack([v, v, v])
-            elif v.shape[0] == 4:
-                v = v[:3,:,:]
-            # we do not need to change anything if number of channels is 3
-            dataset_new.append((v, sample_class_id))
-        self.dataset = dataset_new
-
-    def setup(self, stage):
+        self.dataset = dataset
         n = len(self.dataset)
-        k = int(0.2*n)
-        self.train, self.val, self.test = random_split(self.dataset, [n-2*k, k, k])
+        k = int(0.2 * n)
+        self.train, self.val, self.test = random_split(self.dataset, [n - 2 * k, k, k])
+
+    # def setup(self, stage: str):
+    #     return self.train, self.val, self.test
 
     def train_dataloader(self):
         return DataLoader(self.train, batch_size=32, num_workers=8)
@@ -119,5 +108,3 @@ def test_model(model, trainer, datamodule):
         datamodule=datamodule
     )
     return model
-
-
