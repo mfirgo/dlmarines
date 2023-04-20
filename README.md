@@ -47,3 +47,6 @@ To run all pipelines you can use command:
 kedro run
 ```
 Remember that in order to automatically download dataset you need to add your kaggle key.
+
+## Weights&Biases
+[wandb link](https://wandb.ai/barrybbenson/dlmarines/reports/Training-of-DLMarines-project--Vmlldzo0MTI0Nzc0)
