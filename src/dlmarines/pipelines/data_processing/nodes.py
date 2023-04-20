@@ -1,37 +1,39 @@
 import os
 from kedro.io import PartitionedDataSet
 import torchvision
+from torchvision.datasets import ImageFolder
 from tqdm import tqdm
 from zipfile import ZipFile
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def unzip_dataset():
-    with ZipFile('data/01_raw/sea-animals-image-dataste.zip', 'r') as f:
-        f.extractall('data/01_raw')
+    # check if data/01_raw/sea-animals exists
+    if not os.path.exists("data/01_raw/sea-animals"):
+        with ZipFile("data/01_raw/sea-animals-image-dataste.zip", "r") as f:
+            f.extractall("data/01_raw/sea-animals")
 
-    if not os.path.exists('data/01_raw/Corals/10712079_196e275866_o.jpg'):
-        print('Please unzip the dataset:')
-        print('data/01_raw/Corals/')
-        print('data/01_raw/Crabs/')
-        print('...')
-    return 'unzipped'
+        if not os.path.exists("data/01_raw/Corals/10712079_196e275866_o.jpg"):
+            print("Please unzip the dataset:")
+            print("data/01_raw/Corals/")
+            print("data/01_raw/Crabs/")
+            print("...")
+    else:
+        logger.info("Skipping unzip, data/01_raw/sea-animals already exists")
+    return "data/01_raw/sea-animals"
+
 
 def load_dataset(unzipped):
-    dataset = PartitionedDataSet(
-       path="data/01_raw/",
-       dataset="pillow.ImageDataSet",
-       filename_suffix=".jpg"
+    transform = torchvision.transforms.Compose(
+        [
+            torchvision.transforms.Resize((128, 128)),
+            torchvision.transforms.ToTensor(),
+            # TODO: add preprocessing Normalization
+        ]
     )
-    return dataset.load()
-
-def preprocess_dataset(dataset):
-    transform = torchvision.transforms.Compose([
-        torchvision.transforms.Resize((128, 128)),
-        torchvision.transforms.ToTensor(),
-        # torchvision.transforms.Normalize(mean_vec, std_vec),
-    ])
-    transformed_dataset = dataset.copy()
-
-    for k, v in tqdm(dataset.items()):
-        transformed_dataset[k] = transform(v())
-    return transformed_dataset
+    return ImageFolder(
+        unzipped,
+        transform=transform
+    )
