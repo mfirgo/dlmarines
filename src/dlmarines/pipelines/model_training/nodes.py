@@ -12,10 +12,11 @@ def create_model(params):
     model = MarineModel(params)
     return model
 
-def get_logger(params):
+def get_logger(logger_params, model_params):
     logger = pl.loggers.WandbLogger(
-        project=params['project_name'],
-        entity=params['entity_name'],
+        project=logger_params['project_name'],
+        entity=logger_params['entity_name'],
+        config=model_params,
         log_model=True,
     )
     return logger

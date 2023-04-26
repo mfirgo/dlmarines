@@ -14,7 +14,7 @@ def create_pipeline(**kwargs) -> Pipeline:
             ),
             node(
                 func=get_logger,
-                inputs="params:logger",
+                inputs=["params:logger", "params:model"],
                 outputs="test_logger",
                 name="get_test_logger_node",
             ),
