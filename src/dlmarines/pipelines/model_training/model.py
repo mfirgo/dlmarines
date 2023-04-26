@@ -4,7 +4,21 @@ import torch.nn.functional as F
 import pytorch_lightning as pl
 
 class MarineModel(pl.LightningModule):
+    """MarineModel class. Inherits from pytorch LightningModule
+    """
     def __init__(self, params):
+        """Initializes model
+
+        Args:
+            params (dict): Dict of parameters described below
+            params.cnn_channles(int): number of cnn channels for convolutional layer
+            params.kernel_size(int): kernel size in convolutional layer
+            params.num_cnn_layers: number of convolutional layers
+            params.flattened_size: number of input neurons for first fully connected layer
+            params.fc_features: number of neurons in fully connected layers
+            params.num_fc_layers: number of fully conected layers
+            params.num_classes: number of classes to be classified
+        """
         super().__init__()
         self.params = params
         layers = []

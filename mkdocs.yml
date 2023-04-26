@@ -28,6 +28,7 @@ nav:
       - model training: model_training.md 
       - model evaluation: model_evaluation.md
     - MarinesDataModule: datamodule.md
+    - MarineModel: model.md
 
 plugins:
   - mkdocstrings
