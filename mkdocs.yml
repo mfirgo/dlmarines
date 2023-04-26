@@ -21,11 +21,13 @@ theme:
 nav:
   - Homepage: index.md 
   - Installation: instalation.md
-  - Pipelines Documentation: 
-    - data downloading: data_downloading.md
-    - data processing: data_processing.md
-    - model training: model_training.md 
-    - model evaluation: model_evaluation.md
+  - Documentation: 
+    - Pipelines:
+      - data downloading: data_downloading.md
+      - data processing: data_processing.md
+      - model training: model_training.md 
+      - model evaluation: model_evaluation.md
+    - MarinesDataModule: datamodule.md
 
 plugins:
   - mkdocstrings
