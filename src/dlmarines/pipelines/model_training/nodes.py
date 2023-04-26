@@ -19,13 +19,13 @@ def get_logger(params):
     )
     return logger
 
-def get_trainer(logger, params):
+def get_trainer(logger, datamodule, params):
     trainer = pl.Trainer(
         max_epochs=params['num_epochs'],
         # TODO: add lots of params
         logger=logger,
         callbacks=[
-            LogPredictionSamplesCallback(),
+            LogPredictionSamplesCallback(datamodule.id_to_class),
         ]
     )
     return trainer

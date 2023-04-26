@@ -17,6 +17,7 @@ class MarineModel(pl.LightningModule):
             layers.append(nn.ReLU())
         layers.append(nn.Flatten())
         layers.append(nn.Linear(params['flattened_size'], params['fc_features']))
+        layers.append(nn.ReLU())
         for _ in range(params['num_fc_layers']-1):
             layers.append(nn.Linear(params['fc_features'], params['fc_features']))
             layers.append(nn.ReLU())

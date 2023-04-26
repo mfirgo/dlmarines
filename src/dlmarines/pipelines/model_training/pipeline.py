@@ -20,7 +20,7 @@ def create_pipeline(**kwargs) -> Pipeline:
             ),
             node(
                 func=get_trainer,
-                inputs=["logger", "params:model_training"],
+                inputs=["logger", "datamodule", "params:model_training"],
                 outputs="trainer",
                 name="get_trainer_node",
             ),

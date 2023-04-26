@@ -21,6 +21,8 @@ class MarinesDataModule(pl.LightningDataModule):
                 v = v[:3,:,:]
             dataset_new.append((v, sample_class_id))
         self.dataset = dataset_new
+        self.id_to_class = {v: k for k, v in class_to_id.items()}
+        self.split = False
 
     def split_dataset(self, fraction=0.2, seed=42):
         n = len(self.dataset)
@@ -29,9 +31,10 @@ class MarinesDataModule(pl.LightningDataModule):
             self.dataset, [n-2*k, k, k],
             generator=torch.Generator().manual_seed(seed)
         )
+        self.split = True
 
     def setup(self, stage):
-        if stage == "fit":
+        if not self.split:
             self.split_dataset()
 
     def train_dataloader(self):
