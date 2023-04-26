@@ -5,17 +5,17 @@
 # Link: https://kedro.readthedocs.io/en/0.18.5/kedro_project_setup/configuration.html#parameters
 
 model:
-  cnn_channels: 8
+  cnn_channels: 32
   kernel_size: 3
-  num_cnn_layers: 2
+  num_cnn_layers: 3
   num_fc_layers: 2
-  flattened_size: 123008
+  flattened_size: 476288
   fc_features: 64
   num_classes: 19
   learning_rate: 0.001
 
 model_training:
-  num_epochs: 2 # for testing
+  num_epochs: 20
 
 logger:
   project_name: dlmarines
