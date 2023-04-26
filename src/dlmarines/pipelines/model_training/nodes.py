@@ -15,6 +15,7 @@ def create_model(params):
 def get_logger(params):
     logger = pl.loggers.WandbLogger(
         project=params['project_name'],
+        entity=params['entity_name'],
         log_model=True,
     )
     return logger

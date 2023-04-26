@@ -18,6 +18,7 @@ model_training:
   num_epochs: 20
 
 logger:
-  project_name: dlmarines
+  project_name: dlmarines_public
+  entity_name: dlmarines
 
 
