@@ -29,6 +29,7 @@ nav:
       - model evaluation: model_evaluation.md
     - MarinesDataModule: datamodule.md
     - MarineModel: model.md
+    - Callbacks: callbacks.md
 
 plugins:
   - mkdocstrings
