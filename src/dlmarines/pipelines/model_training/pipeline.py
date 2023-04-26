@@ -1,10 +1,6 @@
-"""
-This is a boilerplate pipeline 'model_training'
-generated using Kedro 0.18.5
-"""
 
 from kedro.pipeline import Pipeline, node, pipeline
-from dlmarines.pipelines.model_training.nodes import create_model, get_trainer, get_logger, train_model, test_model, get_datamodule
+from dlmarines.pipelines.model_training.nodes import create_model, get_trainer, get_logger, train_model, get_datamodule
 
 
 def create_pipeline(**kwargs) -> Pipeline:
@@ -39,12 +35,6 @@ def create_pipeline(**kwargs) -> Pipeline:
                 inputs=["model", "trainer", "datamodule"],
                 outputs="trained_model",
                 name="train_model_node",
-            ),
-            node(
-                func=test_model,
-                inputs=["model", "trainer", "datamodule"],
-                outputs="tested_model",
-                name="test_model_node",
             ),
         ]
     )

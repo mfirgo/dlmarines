@@ -8,12 +8,7 @@ from zipfile import ZipFile
 def unzip_dataset():
     with ZipFile('data/01_raw/sea-animals-image-dataste.zip', 'r') as f:
         f.extractall('data/01_raw')
-
-    if not os.path.exists('data/01_raw/Corals/10712079_196e275866_o.jpg'):
-        print('Please unzip the dataset:')
-        print('data/01_raw/Corals/')
-        print('data/01_raw/Crabs/')
-        print('...')
+    
     return 'unzipped'
 
 def load_dataset(unzipped):
@@ -21,14 +16,14 @@ def load_dataset(unzipped):
        path="data/01_raw/",
        dataset="pillow.ImageDataSet",
        filename_suffix=".jpg"
-    )
-    return dataset.load()
+    ).load()
+    return dataset
 
 def preprocess_dataset(dataset):
     transform = torchvision.transforms.Compose([
+        # TODO: add size to params
         torchvision.transforms.Resize((128, 128)),
         torchvision.transforms.ToTensor(),
-        # torchvision.transforms.Normalize(mean_vec, std_vec),
     ])
     transformed_dataset = dataset.copy()
 

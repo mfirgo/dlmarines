@@ -1,4 +1,8 @@
-"""
-This is a boilerplate pipeline 'model_evaluation'
-generated using Kedro 0.18.5
-"""
+
+def test_model(model, trainer, datamodule):
+    trainer.test(
+        model,
+        datamodule=datamodule
+    )
+    return model
+
