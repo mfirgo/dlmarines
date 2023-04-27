@@ -89,5 +89,5 @@ The technologies and main libraries used in the project:
 * [Kedro](https://kedro.org/) - for project framework and structure
 * [mkdocs](https://www.mkdocs.org/) - for documentation
 * [Poetry](https://python-poetry.org/) -  for managing dependencies
-* [PyTorch]()
-* [Lightning]() - for easy implementation of models and training
+* [PyTorch](https://pytorch.org/) - for deep learning computations
+* [Lightning](https://www.pytorchlightning.ai) - for easy implementation of models and training
