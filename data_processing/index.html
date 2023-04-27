@@ -351,6 +351,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-outputs" class="md-nav__link">
+    Pipeline outputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#src.dlmarines.pipelines.data_processing.nodes" class="md-nav__link">
     src.dlmarines.pipelines.data_processing.nodes
   </a>
@@ -502,6 +516,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-outputs" class="md-nav__link">
+    Pipeline outputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#src.dlmarines.pipelines.data_processing.nodes" class="md-nav__link">
     src.dlmarines.pipelines.data_processing.nodes
   </a>
@@ -553,6 +581,12 @@
 <p>To preprocess data from <code>/data/01_raw/sea-animals-image-dataste.zip</code> use data_processing pipeline</p>
 <pre><code>kedro run --pipeline=data_processing
 </code></pre>
+<h2 id="overview">Overview</h2>
+<p>This pipeline processes the data. First the raw data is unzipped, then loaded using PartitionedDateset and finally it resized and turned into tensors </p>
+<h2 id="pipeline-outputs">Pipeline outputs</h2>
+<ul>
+<li>processed Dataset - dataset containg processed images, saved as pickle</li>
+</ul>
 
 
 <div class="doc doc-object doc-module">

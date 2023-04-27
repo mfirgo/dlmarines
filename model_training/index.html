@@ -365,6 +365,27 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-inputs" class="md-nav__link">
+    Pipeline inputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-outputs" class="md-nav__link">
+    Pipeline outputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#src.dlmarines.pipelines.model_training.nodes" class="md-nav__link">
     src.dlmarines.pipelines.model_training.nodes
   </a>
@@ -516,6 +537,27 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-inputs" class="md-nav__link">
+    Pipeline inputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-outputs" class="md-nav__link">
+    Pipeline outputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#src.dlmarines.pipelines.model_training.nodes" class="md-nav__link">
     src.dlmarines.pipelines.model_training.nodes
   </a>
@@ -581,6 +623,19 @@
 <p>To train the model use model_training pipeline</p>
 <pre><code>kedro run --pipeline=model_training
 </code></pre>
+<h2 id="overview">Overview</h2>
+<p>This pipeline creates DataModule form PreprocessedDataset, as well as creates Logger and Model from parameters defined in model_training.yml. It then makes the Trainer using Datamodlue and Logger, after which it uses it to train the model. The train-test split is performed inside the DataModule.</p>
+<h2 id="pipeline-inputs">Pipeline inputs</h2>
+<ul>
+<li>PreprocessedDataset - dataset outputed by data_processing pipeline</li>
+<li>Training parameters -  parameters defining the training</li>
+<li>model parameters - parameters defining the structure of the model</li>
+<li>logger parameters - parameters defining the wndb project for which to log</li>
+</ul>
+<h2 id="pipeline-outputs">Pipeline outputs</h2>
+<ul>
+<li>trained model - model after trianing, </li>
+</ul>
 
 
 <div class="doc doc-object doc-module">

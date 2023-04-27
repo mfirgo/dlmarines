@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#src.dlmarines.pipelines.model_evaluation.nodes" class="md-skip">
+        <a href="#overview" class="md-skip">
           Skip to content
         </a>
       
@@ -372,6 +372,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-inputs" class="md-nav__link">
+    Pipeline inputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-outputs" class="md-nav__link">
+    Pipeline outputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#src.dlmarines.pipelines.model_evaluation.nodes" class="md-nav__link">
     src.dlmarines.pipelines.model_evaluation.nodes
   </a>
@@ -474,6 +495,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-inputs" class="md-nav__link">
+    Pipeline inputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline-outputs" class="md-nav__link">
+    Pipeline outputs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#src.dlmarines.pipelines.model_evaluation.nodes" class="md-nav__link">
     src.dlmarines.pipelines.model_evaluation.nodes
   </a>
@@ -506,6 +548,21 @@
 
 
   <h1>model evaluation</h1>
+
+<h2 id="overview">Overview</h2>
+<p>This pipeline evaluates the model. It creates the Test Logger and DataModule, to make Test Trainer. It reads Trained Model saved by model_tarining pipeline and utilizes Test Triner to test it. 
+<img alt="model_evaluation_visualization" src="./../../../../imgs/model_evaluation.png" /></p>
+<h2 id="pipeline-inputs">Pipeline inputs</h2>
+<ul>
+<li>PreprocessedDataset - dataset outputed by data_processing pipeline</li>
+<li>Training parameters -  parameters defining the training (for logging)</li>
+<li>logger parameters - parameters defining the wndb project for which to log</li>
+</ul>
+<h2 id="pipeline-outputs">Pipeline outputs</h2>
+<ul>
+<li>Tested model - the model after testing</li>
+</ul>
+
 
 <div class="doc doc-object doc-module">
 
