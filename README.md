@@ -84,6 +84,8 @@ Remember that in order to automatically download dataset you need to add your ka
 ### Weights&Biases
 Here you can view the [Weights&Biases 
 report](https://wandb.ai/dlmarines/dlmarines_public/reports/DL-Marines-Model-Report--Vmlldzo0MTg4NDI3)
+![image](https://user-images.githubusercontent.com/24299499/234803988-2ee9545b-a7ab-43f5-a7fd-376d0b0cfb58.png)
+
 
 ### Documentation
 Detailed documentation can be found [here](https://mfirgo.github.io/dlmarines/)
