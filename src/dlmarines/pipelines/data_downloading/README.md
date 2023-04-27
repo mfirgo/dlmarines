@@ -1,21 +1,9 @@
 # Pipeline data_downloading
 
-> *Note:* This is a `README.md` boilerplate generated using `Kedro 0.18.6`.
-
 ## Overview
 
-<!---
-Please describe your modular pipeline here.
--->
+This pipeline connects to kaggle API using the user credentials stored in [credentials file](./../../../../conf/local/credentials.yml) and downloads the zip containing the dataset
 
 ## Pipeline inputs
 
-<!---
-The list of pipeline inputs.
--->
-
-## Pipeline outputs
-
-<!---
-The list of pipeline outputs.
--->
+* Kaggle credentials of the user (instruction for downloading the credentials can be found in [main README](./../../../../README.md)
