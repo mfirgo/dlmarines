@@ -6,6 +6,8 @@
 ### Dataset
 The dataset contains images of marine animals - 23 different classes (Seahorse, Nudibranchs, Sea Urchins, Octopus, Puffers, Rays, Whales, Eels, Crabs, Squid, Corals, Dolphins, Seal, Penguin, Starfish, Lobster, Jelly Fish, Sea Otter, Fish, Shrimp and Clams). Each image size is of the type (k, 300px) or (300px, k), where k is a number less or equal to 300. 
 Example images:
+
+
 ![eal](./imgs/eal.jpg)
 ![clam](./imgs/clam.jpg)
 ![puff](./imgs/puff.jpg)
