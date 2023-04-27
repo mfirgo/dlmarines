@@ -25,7 +25,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.11"
-torch = "^1.13.1"
+torch = {version = "^1.13.1", source = "torch"}
 numpy = "^1.24.2"
 kedro = "^0.18.5"
 pytest = "^7.2.1"
@@ -38,6 +38,10 @@ kedro-viz = "^5.3.0"
 pytorch-lightning = "^2.0.0"
 wandb = "^0.14.2"
 
+[[tool.poetry.source]]
+name = "torch"
+url = "https://download.pytorch.org/whl/cu117"
+secondary = true
 
 [tool.poetry.group.dev.dependencies]
 kedro-viz = "^5.3.0"

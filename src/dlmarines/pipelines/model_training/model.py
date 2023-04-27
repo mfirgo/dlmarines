@@ -32,21 +32,21 @@ class MarineModel(pl.LightningModule):
         x, y = batch
         y_hat = self(x)
         loss = F.cross_entropy(y_hat, y)
-        self.log("train_loss", loss)
+        self.log("train_loss", loss, sync_dist=True)
         return loss
     
     def validation_step(self, batch, batch_idx):
         x, y = batch
         y_hat = self.model(x)
         loss = F.cross_entropy(y_hat, y)
-        self.log("val_loss", loss)
+        self.log("val_loss", loss, sync_dist=True)
         return loss, y_hat
     
     def test_step(self, batch, batch_idx):
         x, y = batch
         y_hat = self.model(x)
         loss = F.cross_entropy(y_hat, y)
-        self.log("test_loss", loss)
+        self.log("test_loss", loss, sync_dist=True)
         return loss
 
     def configure_optimizers(self):

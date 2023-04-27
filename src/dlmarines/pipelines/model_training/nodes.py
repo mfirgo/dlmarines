@@ -24,6 +24,8 @@ def get_logger(logger_params, model_params):
 def get_trainer(logger, datamodule, params):
     trainer = pl.Trainer(
         max_epochs=params['num_epochs'],
+        accelerator="gpu",
+        devices=1,
         # TODO: add lots of params
         logger=logger,
         callbacks=[
