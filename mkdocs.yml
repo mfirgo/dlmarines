@@ -1,0 +1,39 @@
+# site_name: DLMARINES Docs
+
+# theme:
+#   name: "material"
+
+# plugins:
+#   - mkdocstrings
+
+# nav:
+#   - Homepage: 
+
+
+
+site_name: DLMARINES Docs
+
+theme:
+  name: "material"
+  icon:
+    repo: fontawesome/brands/github
+
+nav:
+  - Homepage: index.md 
+  - Installation: instalation.md
+  - Documentation: 
+    - Pipelines:
+      - data downloading: data_downloading.md
+      - data processing: data_processing.md
+      - model training: model_training.md 
+      - model evaluation: model_evaluation.md
+    - MarinesDataModule: datamodule.md
+    - MarineModel: model.md
+    - Callbacks: callbacks.md
+
+plugins:
+  - mkdocstrings
+  - search
+  # - offline
+
+repo_url: https://github.com/WojciechBogobowicz/nst
